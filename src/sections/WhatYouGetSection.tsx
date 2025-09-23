@@ -1,11 +1,15 @@
+"use client"
 import BigPankhVector from '@/assets/vector/BigPankhVector'
 import Button from '@/components/Button'
 import VerticalCard from '@/components/cards/VerticalCard'
 import Container from '@/components/Container'
+import Dialog from '@/components/Dialog'
 import GYGradientText from '@/components/texts/GYGradientText'
-import React from 'react'
+import React, { useState } from 'react'
 
 const WhatYouGetSection = () => {
+    const [isOpen, setIsOpen] = useState(false)
+
     const cardsData = [
         {
             img: "/images/vertical cards/Card1.svg",
@@ -40,6 +44,8 @@ const WhatYouGetSection = () => {
                 <GYGradientText variant='title'>
                     What you get
                 </GYGradientText>
+                <div className='w-[600px] h-[1px] bg-gradient-to-r from-[#99999900] via-[#FFFFFF] to-[#99999900]' ></div>
+
                 <div className="flex flex-wrap justify-center items-center gap-6">
                     {cardsData.map((card, index) => (
                         <VerticalCard
@@ -51,9 +57,15 @@ const WhatYouGetSection = () => {
                         />
                     ))}
                 </div>
-                <Button className="mt-6">
+                <Button className="mt-6" onClick={() => {
+                    setIsOpen(true)
+                }}>
                     Get Early Invite
                 </Button>
+                <Dialog
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                />
             </div>
         </Container>
     )
