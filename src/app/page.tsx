@@ -4,6 +4,7 @@ import HorizontalBar from "@/components/HorizontalBar";
 import WhiteGradientText from "@/components/texts/WhiteGradientText";
 import HeroSection from "@/sections/HeroSection";
 import QuestionSection from "@/sections/QuestionSection";
+import WhatYouGetSection from "@/sections/WhatYouGetSection";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           </Button>
         </div>
       </HorizontalBar>
+      <WhatYouGetSection />
     </div>
   );
 }
