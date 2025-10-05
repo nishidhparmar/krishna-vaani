@@ -3,11 +3,11 @@ import React from 'react'
 
 const WhiteGradientText = ({ children, className }: { children: React.ReactNode, className?: string }) => {
     return (
-        <p className={cn("bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent",
+        <span className={cn("bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent",
             className
         )}>
             {children}
-        </p>
+        </span>
     )
 }
 

@@ -13,20 +13,16 @@ const Header = () => {
     const headerRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        if (!headerRef.current) return;
-        gsap.to(
-            headerRef.current,
-            {
-                backdropFilter: "blur(40px)",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: document.body,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: true,
-                },
+        gsap.to(headerRef.current, {
+            backdropFilter: "blur(20px)",
+            scrollTrigger: {
+                trigger: headerRef.current,
+                start: 'start start',
+                end: '+=300',
+                scrub: 1
             }
-        );
+        })
+
     }, { scope: headerRef });
 
     return (
