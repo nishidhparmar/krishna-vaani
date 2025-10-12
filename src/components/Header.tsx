@@ -1,16 +1,25 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Container from "./Container";
 import KrishnaLogoVector from "@/assets/vector/KrishnaLogoVector";
+import Switch from "./Switch";
+import { useTranslation } from "react-i18next";
+import GYGradientText from "./texts/GYGradientText";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
     const headerRef = useRef<HTMLDivElement>(null);
+    const { i18n } = useTranslation();
+    const [isHin, setIsHin] = useState(false);
+
+    useEffect(() => {
+        setIsHin(i18n.language === "hi");
+    }, [i18n.language]);
 
     useGSAP(() => {
         gsap.to(headerRef.current, {
@@ -22,7 +31,6 @@ const Header = () => {
                 scrub: 1
             }
         })
-
     }, { scope: headerRef });
 
     return (
@@ -32,6 +40,17 @@ const Header = () => {
                     <div className="flex items-center justify-center gap-3">
                         <KrishnaLogoVector className="shrink-0" />
                         Krishna Vaani
+                    </div>
+                    <div className="space-x-4 flex items-center">
+                        <GYGradientText>Eng</GYGradientText>
+                        <Switch
+                            enabled={isHin}
+                            setEnabled={(val) => {
+                                setIsHin(val);
+                                i18n.changeLanguage(val ? "hi" : "en");
+                            }}
+                        />
+                        <GYGradientText>Hin</GYGradientText>
                     </div>
                 </div>
             </Container>

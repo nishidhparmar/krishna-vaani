@@ -1,17 +1,21 @@
 'use client'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useTranslation } from 'react-i18next'
 
 import Button from '@/components/Button'
 import HorizontalBar from '@/components/HorizontalBar'
 import WhiteGradientText from '@/components/texts/WhiteGradientText'
+import Dialog from '@/components/Dialog'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const GuideSection = () => {
     const containerRef = useRef(null)
+    const { t } = useTranslation()
+    const [isOpen, setIsOpen] = useState(false)
 
     useGSAP(() => {
         // Animate text lines
@@ -49,17 +53,22 @@ const GuideSection = () => {
         <div ref={containerRef}>
             <HorizontalBar>
                 <div className="flex flex-col gap-2 items-center">
-                    <WhiteGradientText className="text-4xl font-primary font-bold text-center guide-text">
-                        Let Krishna’s counsel guide your day - one loving answer at a time.
+                    <WhiteGradientText className="md:text-2xl lg:text-4xl text-lg font-primary font-bold text-center guide-text leading-[60px]">
+                        {t('guideSection.title')}
                     </WhiteGradientText>
-
                     <div className="guide-btn z-50">
-                        <Button className="mt-6">
-                            Get Early Invite
+                        <Button onClick={() => [
+                            setIsOpen(true)
+                        ]} className="mt-6">
+                            {t('guideSection.button')}
                         </Button>
                     </div>
                 </div>
             </HorizontalBar>
+            <Dialog
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+            />
         </div>
     )
 }

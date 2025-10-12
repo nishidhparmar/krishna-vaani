@@ -9,9 +9,12 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
 import React, { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const WhatYouGetSection = () => {
     const [isOpen, setIsOpen] = useState(false)
+
+    const { t } = useTranslation()
 
     const containerRef = useRef(null)
 
@@ -77,41 +80,42 @@ const WhatYouGetSection = () => {
         {
             img: "/images/vertical cards/Card1.svg",
             imgHover: "/images/vertical cards/Card1H.svg",
-            title: "Gita-Guided answers on any Question",
-            subtitle: "Clarity to act with dharma today.",
+            title: t("whatYouGetSection.cards.card1.title"),
+            subtitle: t("whatYouGetSection.cards.card1.subtitle"),
         },
         {
             img: "/images/vertical cards/Card2.svg",
             imgHover: "/images/vertical cards/Card2H.svg",
-            title: "One-tap aarti, one shloka, one reflection",
-            subtitle: "A routine your kids enjoy.",
+            title: t("whatYouGetSection.cards.card2.title"),
+            subtitle: t("whatYouGetSection.cards.card2.subtitle"),
         },
         {
             img: "/images/vertical cards/Card3.svg",
             imgHover: "/images/vertical cards/Card3H.svg",
-            title: "Stories kids love",
-            subtitle: "Values they remember and repeat.",
+            title: t("whatYouGetSection.cards.card3.title"),
+            subtitle: t("whatYouGetSection.cards.card3.subtitle"),
         },
         {
             img: "/images/vertical cards/Card4.svg",
             imgHover: "/images/vertical cards/Card4H.svg",
-            title: "Multilingual (English, Hindi, Gujarati)",
-            subtitle: "Grandparents and children feel at home together.",
+            title: t("whatYouGetSection.cards.card4.title"),
+            subtitle: t("whatYouGetSection.cards.card4.subtitle"),
         },
-    ]
+    ];
+
     return (
         <div ref={containerRef}>
             <Container>
                 <div className='w-full gap-8 min-h-screen relative overflow-hidden flex flex-col justify-center items-center'>
-                    <BigPankhVector height={700} className='absolute p1 -left-[30%] pointer-events-none z-0' />
-                    <BigPankhVector height={700} className='absolute p2 -right-[30%] pointer-events-none z-0' style={{ transform: 'scaleX(-1)' }} />
+                    <BigPankhVector height={"100%"} className='md:h-[60%] xl:h-[100%] hidden lg:flex absolute p1 -left-[30%] pointer-events-none z-0' />
+                    <BigPankhVector height={"100%"} className='md:h-[60%] xl:h-[100%] hidden lg:flex absolute p2 -right-[30%] pointer-events-none z-0' style={{ transform: 'scaleX(-1)' }} />
                     <div className='flex flex-col justify-center items-center gap-8 main'>
                         <GYGradientText variant='title'>
-                            What you get
+                            {t('whatYouGetSection.title')}
                         </GYGradientText>
                         <div className='w-[600px] h-[1px] bg-gradient-to-r from-[#99999900] via-[#FFFFFF] to-[#99999900]' ></div>
 
-                        <div className="flex flex-wrap justify-center items-center gap-6">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-center">
                             {cardsData.map((card, index) => (
                                 <VerticalCard
                                     className='card'
@@ -126,7 +130,7 @@ const WhatYouGetSection = () => {
                         <Button className="mt-6" onClick={() => {
                             setIsOpen(true)
                         }}>
-                            Get Early Invite
+                            {t('whatYouGetSection.button')}
                         </Button>
                     </div>
 

@@ -14,7 +14,7 @@ type VerticalCardProps = {
 
 const VerticalCard: React.FC<VerticalCardProps> = ({ img, imgHover, title, subtitle, className }) => {
     return (
-        <div className={cn("w-[285px] h-[400px] bg-gradient-to-r from-[#19FFFB] via-[#3DFF9B] to-[#FFCD4C] rounded-lg py-[1] z-10", className)}>
+        <div className={cn("w-[100%] h-[400px] bg-gradient-to-r from-[#19FFFB] via-[#3DFF9B] to-[#FFCD4C] rounded-lg py-[1] z-10", className)}>
             <div className="bg-primary rounded-lg h-full w-full shadow-[6px_8px_12.6px_0px_#73F18533_inset,_-5px_-10px_12.6px_0px_#73F18533_inset] flex flex-col items-center justify-center p-4 group relative overflow-hidden gap-2">
                 {/* Fade container */}
                 <div className="relative h-[250px] w-full flex items-center justify-center">
@@ -37,7 +37,7 @@ const VerticalCard: React.FC<VerticalCardProps> = ({ img, imgHover, title, subti
                 <WhiteGradientText className="text-center text-lg font-bold font-primary mt-2">
                     {title}
                 </WhiteGradientText>
-                <WhiteGradientText className="text-[10px]">
+                <WhiteGradientText className="text-[10px] text-center">
                     {subtitle}
                 </WhiteGradientText>
             </div>

@@ -2,6 +2,7 @@
 import gsap from 'gsap'
 import { LenisRef, ReactLenis } from 'lenis/react'
 import React, { useEffect, useRef } from 'react'
+import "@/app/i18n";
 
 export function LenisWrapper({
     children

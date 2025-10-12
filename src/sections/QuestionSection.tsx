@@ -11,12 +11,36 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import ReactPlayer from 'react-player'
 
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const QuestionSection = () => {
 
     const containerRef = useRef(null)
     const [isPlay, setIsPlay] = useState(false)
+    const [activeVideo, setActiveVideo] = useState(0)
+    const { t, i18n } = useTranslation();
+    const [isHin, setIsHin] = useState(false);
+
+    useEffect(() => {
+        setIsHin(i18n.language === "hi");
+    }, [i18n.language]);
+
+    const videos = [
+        {
+            en: '/videos/en/1 Happiness is a state (Output).webm',
+            hi: '/videos/hi/Hindi 1 Happiness is a state (Output).webm'
+        },
+        {
+            en: '/videos/en/2 You have the right (Output).webm',
+            hi: '/videos/hi/Hindi 2 You have the right (Output).webm'
+        },
+        {
+            en: '/videos/en/3 Those who don’t respect(Output).webm',
+            hi: '/videos/hi/Hindi 3 Those who don’t respect (Output).webm'
+        }
+    ]
+
     useGSAP(() => {
         const t1 = gsap.timeline()
         t1.
@@ -79,20 +103,36 @@ const QuestionSection = () => {
 
     }, { scope: containerRef })
     return (
-        <div ref={containerRef} className='overflow-hidden bg-[url(/images/hero-blank.png)] bg-fixed  w-full h-full bg-no-repeat bg-cover relative'>
+        <div id='que' ref={containerRef} className='overflow-hidden bg-[url(/images/hero-blank.png)] bg-fixed  w-full h-full bg-no-repeat bg-cover relative'>
             <Image alt='mandala' src={'/images/circular-mandala.svg'} width={1000} height={1000} className='w-full h-full absolute top-0 translate-x-[25%] mandala' />
-            <ReactPlayer playing={isPlay} onEnded={() => {
-                setIsPlay(false)
-            }} src='/v1.webm' width={'100%'} height={'100%'} className='w-full h-full absolute translate-x-[22%] bottom-0 translate-y-[10%]' />
+            {!isHin &&
+                videos.map((i, index) =>
+                    <ReactPlayer key={index} playing={isPlay && (activeVideo === index)} onEnded={() => {
+                        setIsPlay(false)
+                    }} src={i.en} width={'100%'} height={'100%'} className={cn('w-full h-full absolute translate-x-[22%] bottom-0 translate-y-[10%]',
+                        activeVideo === index ? 'opacity-100' : 'opacity-0'
+                    )} />
+                )
+            }
+            {isHin &&
+                videos.map((i, index) =>
+                    <ReactPlayer key={index} playing={isPlay && (activeVideo === index)} onEnded={() => {
+                        setIsPlay(false)
+                    }} src={i.hi} width={'100%'} height={'100%'} className={cn('w-full h-full absolute translate-x-[22%] bottom-0 translate-y-[10%]',
+                        activeVideo === index ? 'opacity-100' : 'opacity-0'
+                    )} />
+                )
+            }
+
             <Container>
                 <div className={cn(`h-screen  bg-cover bg-center`)}>
                     <div className='w-1/2 flex items-start justify-center h-full flex-col gap-4'>
                         <WhiteGradientText className='text-[24px] font-semibold font-primary'>
-                            (Ask with faith)
+                            {t('queSection.askWithFaith')}
                         </WhiteGradientText>
                         <div className='text'>
                             <GYGradientText className='text-[56px] font-semibold font-primary '>
-                                Ask from the heart. Receive counsel rooted in the Gita.
+                                {t('queSection.title')}
                             </GYGradientText>
                         </div>
 
@@ -100,18 +140,29 @@ const QuestionSection = () => {
                         <div
                             onClick={() => {
                                 setIsPlay(true)
+                                setActiveVideo(0)
                             }}
                             className='flex items-center justify-center gap-3 que -translate-x-[100]'>
                             <PankhVector />
-                            <QuestionCard text='Krishna, how can I find true happiness?' />
+                            <QuestionCard text={t('queSection.questions.q1')} />
                         </div>
-                        <div className='flex items-center justify-center gap-3 que'>
+                        <div
+                            onClick={() => {
+                                setIsPlay(true)
+                                setActiveVideo(1)
+                            }}
+                            className='flex items-center justify-center gap-3 que'>
                             <PankhVector />
-                            <QuestionCard text='Krishna, how should I deal with expectations from my work?' />
+                            <QuestionCard text={t('queSection.questions.q2')} />
                         </div>
-                        <div className='flex items-center justify-center gap-3 que'>
+                        <div
+                            onClick={() => {
+                                setIsPlay(true)
+                                setActiveVideo(2)
+                            }}
+                            className='flex items-center justify-center gap-3 que'>
                             <PankhVector />
-                            <QuestionCard text='Krishna, why do I feel hurt when others don’t respect me?' />
+                            <QuestionCard text={t('queSection.questions.q3')} />
                         </div>
                     </div>
                     <div className='w-1/2'>

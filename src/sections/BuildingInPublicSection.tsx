@@ -3,10 +3,15 @@ import Button from '@/components/Button'
 import HorizontalBar from '@/components/HorizontalBar'
 import WhiteGradientText from '@/components/texts/WhiteGradientText'
 import { useGSAP } from '@gsap/react'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import gsap from 'gsap'
+import { useTranslation } from 'react-i18next'
+import Dialog from '@/components/Dialog'
 const BuildingInPublicSection = () => {
     const containerRef = useRef(null)
+    const { t } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false)
+
     useGSAP(() => {
 
         gsap.fromTo('.text',
@@ -50,19 +55,25 @@ const BuildingInPublicSection = () => {
         <div ref={containerRef}>
             <HorizontalBar>
                 <div className="flex flex-col gap-2 items-center">
-                    <WhiteGradientText className="text-4xl font-primary font-bold text-center text">
-                        Building in public - watch this week’s demo clip and see what’s new.
+                    <WhiteGradientText className="md:text-2xl lg:text-4xl text-lg font-primary font-bold text-center text leading-[60px]">
+                        {t('buildingInPublicSection.title')}
                     </WhiteGradientText>
-                    <WhiteGradientText className="text-xl text">
-                        New families join every week.
+                    <WhiteGradientText className="text-sm md:text-base lg:text-xl text-center text">
+                        {t('buildingInPublicSection.subtitle')}
                     </WhiteGradientText>
                     <div className='btn z-50'>
-                        <Button className="mt-6 ">
-                            Get Early Invite
+                        <Button onClick={() => {
+                            setIsOpen(true)
+                        }} className="mt-6 ">
+                            {t('buildingInPublicSection.button')}
                         </Button>
                     </div>
                 </div>
             </HorizontalBar>
+            <Dialog
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+            />
         </div>
 
     )

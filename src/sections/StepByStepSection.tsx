@@ -1,23 +1,26 @@
-import CircularDesignVector from '@/assets/vector/CircularDesignVector'
+"use client"
 import StepCard from '@/components/cards/StepCard'
 import Container from '@/components/Container'
 import GYGradientText from '@/components/texts/GYGradientText'
 import WhiteGradientText from '@/components/texts/WhiteGradientText'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const StepByStepSection = () => {
+    const { t } = useTranslation();
+
     const steps = [
-        { title: "Understand", description: "Understand your question in plain language." },
-        { title: "Research", description: "Explore scripture and scholarly insights." },
-        { title: "Reflect", description: "Interpret with care and wisdom." },
-        { title: "Guide", description: "Offer respectful, step-by-step guidance." },
+        { title: t("stepByStepSection.steps.step1.title"), description: t("stepByStepSection.steps.step1.description") },
+        { title: t("stepByStepSection.steps.step2.title"), description: t("stepByStepSection.steps.step2.description") },
+        { title: t("stepByStepSection.steps.step3.title"), description: t("stepByStepSection.steps.step3.description") },
+        { title: t("stepByStepSection.steps.step4.title"), description: t("stepByStepSection.steps.step4.description") },
     ];
     return (
         <Container className='bg-[url(/images/mandala.svg)] bg-top bg-no-repeat bg-cover'>
             <div className='flex flex-col justify-center items-center gap-20'>
                 <div className='space-y-10'>
                     <GYGradientText variant='title' className='text-center'>
-                        Respectful, scripture-aligned guidance - step by step
+                        {t("stepByStepSection.title")}
                     </GYGradientText>
                     <div className='w-full h-[1px] bg-gradient-to-r from-[#99999900] via-[#FFFFFF] to-[#99999900]'></div>
                 </div>
@@ -34,7 +37,7 @@ const StepByStepSection = () => {
                     ))}
                 </div>
                 <WhiteGradientText className='italic font-primary tracking-wide font-bold'>
-                    Advisory note : Advisory only, not a substitute for your deity, guru, or spiritual authority
+                    {t("stepByStepSection.advisory")}
                 </WhiteGradientText>
             </div>
         </Container>

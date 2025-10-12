@@ -9,12 +9,13 @@ import Container from '@/components/Container'
 import GYGradientText from '@/components/texts/GYGradientText'
 import WhiteGradientText from '@/components/texts/WhiteGradientText'
 import { cn } from '@/utils/cn'
-
+import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 gsap.registerPlugin(ScrollTrigger)
 
 const HeroSection = () => {
     const containerRef = useRef(null)
-
+    const { t } = useTranslation();
     useGSAP(() => {
         // Timeline for hero text
         const tl = gsap.timeline({
@@ -64,33 +65,35 @@ const HeroSection = () => {
 
     return (
         <div ref={containerRef} className='hero-bg bg-[url(/images/hero.jpg)] bg-fixed w-full h-full bg-no-repeat bg-cover'>
+
             <Container>
                 <div className={cn('h-screen flex items-center justify-between')}>
                     {/* Left content */}
                     <div className='w-1/2 flex flex-col gap-4'>
                         <div className='hero-line'>
                             <WhiteGradientText className=' text-[24px] font-semibold font-primary'>
-                                (Ask with faith)
+                                {t('heroSection.askWithFaith')}
                             </WhiteGradientText>
                         </div>
 
                         <div className='hero-line'>
-                            <GYGradientText className=' text-[56px] font-semibold font-primary leading-tight'>
-                                Hear Gita-guided answers like Krishna would counsel.
+                            <GYGradientText className=' text-[56px] font-semibold font-primary'>
+                                {t('heroSection.title')}
                             </GYGradientText>
                         </div>
 
                         <div className='hero-divider w-full h-[1px] bg-gradient-to-r from-[#FFFFFF] to-[#99999900]' />
                         <div className='hero-desc'>
-                            <WhiteGradientText className=' text-[18px] leading-relaxed max-w-[500px]'>
-                                Krishna Vaani is your gentle daily companion for your family’s questions —
-                                scripture-aligned, child-friendly, and multilingual.
+                            <WhiteGradientText className=' text-[18px] max-w-[500px]'>
+                                {t('heroSection.description')}
                             </WhiteGradientText>
                         </div>
 
 
                         <div className='hero-btn mt-4 w-fit'>
-                            <Button >Experience Krishna</Button>
+                            <Link href={'/#que'}>
+                                <Button>{t('heroSection.button')}</Button>
+                            </Link>
                         </div>
                     </div>
 
