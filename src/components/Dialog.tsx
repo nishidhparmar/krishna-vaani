@@ -23,13 +23,13 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
 
         const formData = new FormData(formRef.current);
 
-        fetch("https://script.google.com/macros/s/AKfycbzqLzCUDtciqFISm8UeWg6wvvJ2hV7yKLI51dtGB75Waew1iFWQyuobFlfbG2F21UIF/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbyY_Sg6OUoVNPwpcc0Omdi0Njm_gUOKt9XdPyTSjIo8niwxrdxXE-cvojzNuYtfunkq/exec", {
             method: 'POST',
             body: formData,
         })
             .then(res => res.json())
             .then(data => {
-                alert(data.msg || 'Form submitted successfully!');
+                setIsOpen(false)
                 // Clear fields
                 setName('');
                 setEmail('');
@@ -45,26 +45,27 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
     return (
         <Fragment>
             {isOpen && (
-                <div className='fixed top-0 left-0 overflow-auto w-full h-screen z-50 backdrop-blur-xl flex items-center justify-center'>
-                    <div className='flex items-center justify-center gap-4 flex-col relative'>
+                <div className='fixed top-0 left-0 overflow-auto w-full h-screen z-[100] backdrop-blur-xl flex items-center justify-center'>
+                    <div className='flex items-center justify-center w-full gap-4 flex-col relative'>
+
                         {/* Close Button */}
                         <div
                             onClick={() => setIsOpen(false)}
-                            className='rounded-full w-[30px] h-[30px] absolute -top-2 -right-10 cursor-pointer bg-gradient-to-b from-[#00a1564d] to-[#c6ab264d] flex items-center justify-center font-semibold text-base'
+                            className='rounded-full w-[30px] h-[30px] absolute top-0 right-[20px] lg:right-[100px] cursor-pointer bg-gradient-to-b from-[#00a1564d] to-[#c6ab264d] flex items-center justify-center font-semibold text-base'
                         >
                             <p className='text-white/70'>x</p>
                         </div>
-
                         {/* Title */}
                         <GYGradientText variant='title'>Get Divine Access</GYGradientText>
-                        <div className='w-[600px] h-[1px] bg-gradient-to-r from-[#99999900] via-[#FFFFFF] to-[#99999900]'></div>
+                        <div className='w-full lg:w-[600px] h-[1px] bg-gradient-to-r from-[#99999900] via-[#FFFFFF] to-[#99999900]'></div>
 
                         {/* Form */}
-                        <form className='flex flex-col gap-4 mt-4' ref={formRef} onSubmit={handleSubmit}>
+                        <form className='flex flex-col px-10 relative gap-4 mt-4 w-full items-center justify-center' ref={formRef} onSubmit={handleSubmit}>
+
                             {/* Name */}
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Name</WhiteGradientText>
-                                <div className='w-[600px] rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className='rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
                                     <input
                                         type="text"
                                         name="name"
@@ -78,9 +79,9 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             </div>
 
                             {/* Email */}
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Email</WhiteGradientText>
-                                <div className='w-[600px] rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className=' rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
                                     <input
                                         type="email"
                                         name="email"
@@ -94,9 +95,9 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             </div>
 
                             {/* Phone */}
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Phone No.</WhiteGradientText>
-                                <div className='w-[600px] rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className=' rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
                                     <input
                                         type="number"
                                         name="phone"
@@ -110,9 +111,9 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             </div>
 
                             {/* DOB */}
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Date Of Birth</WhiteGradientText>
-                                <div className='w-[600px] rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className='rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
                                     <input
                                         type="text"
                                         name="dob"

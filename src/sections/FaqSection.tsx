@@ -82,7 +82,7 @@ const FaqSection = () => {
     return (
         <div ref={containerRef}>
             <Container>
-                <div className='w-full gap-8 min-h-screen relative overflow-hidden flex flex-col justify-center items-center px-4 sm:px-6 md:px-8'>
+                <div className='w-full gap-8 min-h-[80vh] relative overflow-hidden flex flex-col justify-start items-center px-4 sm:px-6 md:px-8'>
                     <BigPankhVector height={"100%"} className='md:h-[60%] xl:h-[100%] hidden lg:flex absolute p1 -left-[30%] pointer-events-none z-0' />
                     <BigPankhVector height={"100%"} className='md:h-[60%] xl:h-[100%] hidden lg:flex absolute p2 -right-[30%] pointer-events-none z-0' style={{ transform: 'scaleX(-1)' }} />
                     <div className='flex flex-col justify-center items-center gap-8 faq-main z-10'>

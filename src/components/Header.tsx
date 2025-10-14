@@ -21,28 +21,28 @@ const Header = () => {
         setIsHin(i18n.language === "hi");
     }, [i18n.language]);
 
-    useGSAP(() => {
-        gsap.to(headerRef.current, {
-            backdropFilter: "blur(20px)",
-            scrollTrigger: {
-                trigger: headerRef.current,
-                start: 'start start',
-                end: '+=300',
-                scrub: 1
-            }
-        })
-    }, { scope: headerRef });
+    // useGSAP(() => {
+    //     gsap.to(headerRef.current, {
+    //         backdropFilter: "blur(20px)",
+    //         scrollTrigger: {
+    //             trigger: headerRef.current,
+    //             start: 'start start',
+    //             end: '+=300',
+    //             scrub: 1
+    //         }
+    //     })
+    // }, { scope: headerRef });
 
     return (
-        <div ref={headerRef} className="fixed top-0 left-0 w-full z-50">
-            <Container>
+        <div ref={headerRef} className="absolute backdrop-blur-sm top-0 w-full z-50">
+            <Container className="py-0">
                 <div className="w-full h-[65px] my-4 flex items-center justify-between font-primary font-bold text-[24px] text-white">
                     <div className="flex items-center justify-center gap-3">
                         <KrishnaLogoVector className="shrink-0" />
                         Krishna Vaani
                     </div>
                     <div className="space-x-4 flex items-center">
-                        <GYGradientText>Eng</GYGradientText>
+                        <GYGradientText className="text-[14px] lg:text-[20px]">Eng</GYGradientText>
                         <Switch
                             enabled={isHin}
                             setEnabled={(val) => {
@@ -50,7 +50,7 @@ const Header = () => {
                                 i18n.changeLanguage(val ? "hi" : "en");
                             }}
                         />
-                        <GYGradientText>Hin</GYGradientText>
+                        <GYGradientText className="text-[14px] lg:text-[20px]">Hin</GYGradientText>
                     </div>
                 </div>
             </Container>

@@ -16,8 +16,8 @@ const StepByStepSection = () => {
         { title: t("stepByStepSection.steps.step4.title"), description: t("stepByStepSection.steps.step4.description") },
     ];
     return (
-        <Container className='bg-[url(/images/mandala.svg)] bg-top bg-no-repeat bg-cover'>
-            <div className='flex flex-col justify-center items-center gap-20'>
+        <Container className='bg-[url(/images/mandala.svg)] bg-top bg-no-repeat bg-cover '>
+            <div className='flex flex-col justify-center items-center gap-20 min-h-screen'>
                 <div className='space-y-10'>
                     <GYGradientText variant='title' className='text-center'>
                         {t("stepByStepSection.title")}
@@ -36,7 +36,7 @@ const StepByStepSection = () => {
                         />
                     ))}
                 </div>
-                <WhiteGradientText className='italic font-primary tracking-wide font-bold'>
+                <WhiteGradientText className='italic font-primary tracking-wide font-bold text-center lg:text-left'>
                     {t("stepByStepSection.advisory")}
                 </WhiteGradientText>
             </div>

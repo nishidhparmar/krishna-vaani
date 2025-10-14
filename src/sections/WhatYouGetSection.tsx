@@ -7,6 +7,7 @@ import Dialog from '@/components/Dialog'
 import GYGradientText from '@/components/texts/GYGradientText'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import React, { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -19,62 +20,72 @@ const WhatYouGetSection = () => {
     const containerRef = useRef(null)
 
     useGSAP(() => {
-        const t1 = gsap.timeline()
+        ScrollTrigger.matchMedia({
 
-        t1.set('.main', {
-            opacity: 0
-        })
-            .from('.p1', {
-                opacity: 0,
-                rotate: -90,
-                scrollTrigger: {
-                    trigger: '.p1',
-                    start: 'top center',
-                    end: '20% center',
-                    scrub: 1
-                }
-            }).from('.p2', {
-                opacity: 0,
-                rotate: 270,
-                scrollTrigger: {
-                    trigger: '.p2',
-                    start: 'top center',
-                    end: '20% center',
-                    scrub: 1
-                }
-            }, '<')
-            .fromTo('.main', {
-                opacity: 0,
-            }, {
-                opacity: 1,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: '.p2',
-                    start: 'top 200',
-                    end: '20% 300',
-                    scrub: 1
-                }
-            })
-            .fromTo('.card', {
-                opacity: 0,
-                y: 50
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 1,
-                scrollTrigger: {
-                    trigger: '.card',
-                    start: 'top 80%',
-                    end: '20% 50%',
-                    scrub: 1
-                }
-            })
+            // 🖥️ Desktop only
+            "(min-width: 1024px)": () => {
+                const t1 = gsap.timeline();
 
+                t1.set('.main', { opacity: 0 })
+                    .from('.p1', {
+                        opacity: 0,
+                        rotate: -90,
+                        scrollTrigger: {
+                            trigger: '.p1',
+                            start: 'top 80%',
+                            end: '20% center',
+                            scrub: 1,
+                        },
+                    })
+                    .from('.p2', {
+                        opacity: 0,
+                        rotate: 270,
+                        scrollTrigger: {
+                            trigger: '.p2',
+                            start: 'top 80%',
+                            end: '20% center',
+                            scrub: 1,
+                        },
+                    }, '<')
+                    .fromTo('.main',
+                        { opacity: 0 },
+                        {
+                            opacity: 1,
+                            duration: 1,
+                            scrollTrigger: {
+                                trigger: '.p2',
+                                start: 'top 80%',
+                                end: '20% 60%',
 
-    }, {
-        scope: containerRef
-    })
+                                scrub: 1,
+                            },
+                        }
+                    )
+                    .fromTo('.card',
+                        { opacity: 0, y: 50 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1,
+                            stagger: 1,
+                            scrollTrigger: {
+                                trigger: '.p2',
+                                start: 'top 60%',
+                                end: '20% 40%',
+                                scrub: 1,
+                            },
+                        }
+                    );
+            },
+
+            // 📱 Mobile — disable animations
+            "(max-width: 1023px)": () => {
+                // Just reset elements instantly (no animation)
+                gsap.set(['.p1', '.p2', '.main', '.card'], { opacity: 1, y: 0, rotate: 0 });
+            },
+        });
+    }, { scope: containerRef });
+
 
     const cardsData = [
         {
@@ -115,7 +126,7 @@ const WhatYouGetSection = () => {
                         </GYGradientText>
                         <div className='w-[600px] h-[1px] bg-gradient-to-r from-[#99999900] via-[#FFFFFF] to-[#99999900]' ></div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-center">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-center w-full">
                             {cardsData.map((card, index) => (
                                 <VerticalCard
                                     className='card'
