@@ -3,6 +3,7 @@ import React, { FC, Fragment, useRef, useState } from 'react'
 import GYGradientText from './texts/GYGradientText'
 import Button from './Button'
 import WhiteGradientText from './texts/WhiteGradientText'
+import { toast } from 'react-toastify'
 
 type DialogProps = {
     isOpen: boolean
@@ -29,6 +30,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
         })
             .then(res => res.json())
             .then(data => {
+                toast.success('Form is submitted')
                 setIsOpen(false)
                 // Clear fields
                 setName('');
@@ -115,7 +117,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                                 <WhiteGradientText>Date Of Birth</WhiteGradientText>
                                 <div className='rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-sm'>
                                     <input
-                                        type="text"
+                                        type="date"
                                         name="dob"
                                         placeholder='DD/MM/YYYY'
                                         className='w-full h-full focus:outline-none bg-transparent'
