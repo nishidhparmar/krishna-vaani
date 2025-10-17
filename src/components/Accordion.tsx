@@ -28,7 +28,7 @@ const Accordion: FC<AccordionProps> = ({ className, title, children }) => {
                     className
                 )}
             >
-                {title}
+                <p className='lg:pr-0 pr-6'>{title}</p>
                 <span
                     className={cn(
                         'absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 text-white font-bold text-xl transition-transform duration-200',

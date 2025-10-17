@@ -45,7 +45,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
     return (
         <Fragment>
             {isOpen && (
-                <div className='fixed top-0 left-0 overflow-auto w-full h-screen z-[100] backdrop-blur-xl flex items-center justify-center'>
+                <div className='fixed top-0 left-0 overflow-auto w-full h-screen z-[100] backdrop-blur-xl flex items-start py-10 lg:py-0 lg:items-center justify-center'>
                     <div className='flex items-center justify-center w-full gap-4 flex-col relative'>
 
                         {/* Close Button */}
@@ -65,7 +65,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             {/* Name */}
                             <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Name</WhiteGradientText>
-                                <div className='rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className='rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-sm'>
                                     <input
                                         type="text"
                                         name="name"
@@ -81,7 +81,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             {/* Email */}
                             <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Email</WhiteGradientText>
-                                <div className=' rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className=' rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-sm'>
                                     <input
                                         type="email"
                                         name="email"
@@ -97,7 +97,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             {/* Phone */}
                             <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Phone No.</WhiteGradientText>
-                                <div className=' rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className=' rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-sm'>
                                     <input
                                         type="number"
                                         name="phone"
@@ -113,7 +113,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             {/* DOB */}
                             <div className='flex flex-col gap-2 w-full lg:w-[600px]'>
                                 <WhiteGradientText>Date Of Birth</WhiteGradientText>
-                                <div className='rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-lg'>
+                                <div className='rounded-lg bg-gradient-to-r from-[#00a1564d] to-[#c6ab264d] border-x-[2px] px-6 py-3 border-l-[#19FFFB] border-r-[#FFCD4C] text-white font-medium text-sm'>
                                     <input
                                         type="text"
                                         name="dob"

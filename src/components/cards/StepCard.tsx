@@ -23,7 +23,7 @@ const StepCard: React.FC<StepCardProps> = ({ title, description, className, inde
             }
 
             <div className='flex items-center gap-2'>
-                <GYGradientText variant='title' className='text-2xl'>
+                <GYGradientText variant='title' className='text-2xl lg:w-auto w-[20px]'>
                     {index + 1}
                 </GYGradientText>
                 <div className='bg-gradient-to-r w-full from-[#19FFFB] via-[#3DFF9B] to-[#FFCD4C] rounded-lg px-[2] h-full'>
@@ -31,11 +31,11 @@ const StepCard: React.FC<StepCardProps> = ({ title, description, className, inde
                         <BigPankhVector className='absolute -right-10 bottom-0 rotate-180' width={100} height={100} />
 
                         <div className='flex items-center gap-4 justify-start lg:justify-center w-full'>
-                            <WhiteGradientText className='font-primary font-bold text-lg'>
+                            <WhiteGradientText className='font-primary font-bold text-sm lg:text-lg lg:w-auto w-[70px] shrink-0'>
                                 {title}
                             </WhiteGradientText>
                             <div className='bg-gradient-to-b from-[#19FFFB] via-[#3DFF9B] to-[#FFCD4C] w-[2px] h-full'><p className='opacity-0'>1</p></div>
-                            <WhiteGradientText className='opacity-70 text-sm'>
+                            <WhiteGradientText className='opacity-70 text-xs lg:text-sm'>
                                 {description}
                             </WhiteGradientText>
                         </div>

@@ -12,6 +12,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import React, { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { SwiperSlide, Swiper } from 'swiper/react'
+import { Pagination } from 'swiper/modules';
 const WhatYouGetSection = () => {
     const [isOpen, setIsOpen] = useState(false)
 
@@ -116,6 +118,20 @@ const WhatYouGetSection = () => {
 
     return (
         <div ref={containerRef}>
+            {/* <Swiper className="mySwiper" pagination={true} modules={[Pagination]} >
+                {cardsData.map((card, index) => (
+                    <SwiperSlide key={index} className='px-10' >
+                        <VerticalCard
+                            className='card'
+                            key={index}
+                            img={card.img}
+                            imgHover={card.imgHover}
+                            title={card.title}
+                            subtitle={card.subtitle}
+                        /></SwiperSlide>
+
+                ))}
+            </Swiper> */}
             <Container>
                 <div className='w-full gap-8 min-h-screen relative overflow-hidden flex flex-col justify-center items-center'>
                     <BigPankhVector height={"100%"} className='md:h-[60%] xl:h-[100%] hidden lg:flex absolute p1 -left-[30%] pointer-events-none z-0' />

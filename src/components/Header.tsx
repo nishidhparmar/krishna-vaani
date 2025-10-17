@@ -37,8 +37,8 @@ const Header = () => {
         <div ref={headerRef} className="absolute backdrop-blur-sm top-0 w-full z-50">
             <Container className="py-0">
                 <div className="w-full h-[65px] my-4 flex items-center justify-between font-primary font-bold text-[24px] text-white">
-                    <div className="flex items-center justify-center gap-3">
-                        <KrishnaLogoVector className="shrink-0" />
+                    <div className="flex items-center justify-center gap-3 text-base lg:text-lg">
+                        <KrishnaLogoVector className="shrink-0 lg:w-[56px] w-[40px]" />
                         Krishna Vaani
                     </div>
                     <div className="space-x-4 flex items-center">
