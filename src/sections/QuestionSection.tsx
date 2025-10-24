@@ -181,11 +181,11 @@ const QuestionSection = () => {
             <Container className='relative'>
                 <div className={cn(`h-screen  bg-cover bg-center`)}>
                     <div className='w-full lg:w-1/2 flex items-center lg:items-start lg:justify-center justify-end h-full flex-col gap-4'>
-                        <WhiteGradientText className='text-[16px] lg:text-[24px] font-semibold font-primary w-full lg:text-left text-center'>
+                        <WhiteGradientText className='text-[16px] xl:text-[24px] font-semibold font-primary w-full lg:text-left text-center'>
                             {t('queSection.askWithFaith')}
                         </WhiteGradientText>
                         <div className='text'>
-                            <GYGradientText className='text-[32px] lg:text-[56px] font-semibold font-primary text-center lg:text-left'>
+                            <GYGradientText className='text-[32px] xl:text-[56px] font-semibold font-primary text-center lg:text-left'>
                                 {t('queSection.title')}
                             </GYGradientText>
                         </div>

@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -10,12 +10,14 @@ import WhiteGradientText from '@/components/texts/WhiteGradientText'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import Image from 'next/image'
+import Dialog from '@/components/Dialog'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const HeroSection = () => {
     const containerRef = useRef(null)
     const { t } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false)
 
     useGSAP(() => {
         // Match animations by screen size
@@ -129,13 +131,13 @@ const HeroSection = () => {
                 <div className='h-screen flex items-end lg:items-center justify-between'>
                     <div className='lg:w-1/2 w-full flex flex-col gap-4 lg:items-start items-center translate-y-[-10vh]'>
                         <div className='hero-line flex items-center lg:justify-start justify-center'>
-                            <WhiteGradientText className='text-[16px] lg:text-[24px] font-semibold font-primary'>
+                            <WhiteGradientText className='text-[16px] xl:text-[24px] font-semibold font-primary'>
                                 {t('heroSection.askWithFaith')}
                             </WhiteGradientText>
                         </div>
 
                         <div className='hero-line'>
-                            <GYGradientText className='text-[32px] lg:text-[56px] font-semibold font-primary lg:text-left text-center'>
+                            <GYGradientText className='text-[32px] xl:text-[56px] font-semibold font-primary lg:text-left text-center'>
                                 {t('heroSection.title')}
                             </GYGradientText>
                         </div>
@@ -143,18 +145,27 @@ const HeroSection = () => {
                         <div className='hero-divider w-full h-[1px] bg-gradient-to-r from-[#FFFFFF] to-[#99999900]' />
 
                         <div className='hero-desc flex items-center lg:justify-start justify-center'>
-                            <WhiteGradientText className='text-[12px] lg:text-[18px] lg:max-w-[500px] lg:text-left text-center'>
+                            <WhiteGradientText className='text-[12px] xl:text-[18px] lg:max-w-[500px] lg:text-left text-center'>
                                 {t('heroSection.description')}
                             </WhiteGradientText>
                         </div>
 
-                        <div className='hero-btn mt-4 w-fit'>
+                        <div className='hero-btn mt-4 w-fit flex lg:flex-row flex-col items-center gap-4 lg:gap-2'>
                             <Link href={'/#que'}>
                                 <Button>{t('heroSection.button')}</Button>
                             </Link>
+                            <Button className='hover:from-transparent bg-gradient-to-l from-transparent border-[#19FFFB]/50 border-2 to-transparent' onClick={() => {
+                                setIsOpen(true)
+                            }}>
+                                {t('whatYouGetSection.button')}
+                            </Button>
                         </div>
                     </div>
                 </div>
+                <Dialog
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                />
             </Container>
         </div>
     )
