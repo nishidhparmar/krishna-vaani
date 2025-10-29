@@ -112,9 +112,11 @@ const GuideSection = () => {
                         {t('guideSection.title')}
                     </WhiteGradientText>
                     <div className="btn z-50">
-                        <Button onClick={() => [
+                        <Button onClick={() => {
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({ event: 'early_access_click' });
                             setIsOpen(true)
-                        ]} className="mt-6">
+                        }} className="mt-6">
                             {t('guideSection.button')}
                         </Button>
                     </div>

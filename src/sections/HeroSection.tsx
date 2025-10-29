@@ -155,6 +155,9 @@ const HeroSection = () => {
                                 <Button>{t('heroSection.button')}</Button>
                             </Link>
                             <Button className='hover:from-transparent bg-gradient-to-l from-transparent border-[#19FFFB]/50 border-2 to-transparent' onClick={() => {
+                                window.dataLayer = window.dataLayer || [];
+                                window.dataLayer.push({ event: 'early_access_click' });
+
                                 setIsOpen(true)
                             }}>
                                 {t('whatYouGetSection.button')}

@@ -28,3 +28,13 @@ input[type=number] {
 html {
   scroll-behavior: smooth;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  caret-color: white;
+  /* keeps cursor visible */
+  transition: background-color 9999s ease-in-out 0s;
+}

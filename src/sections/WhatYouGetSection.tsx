@@ -155,6 +155,8 @@ const WhatYouGetSection = () => {
                             ))}
                         </div>
                         <Button className="mt-6" onClick={() => {
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({ event: 'early_access_click' });
                             setIsOpen(true)
                         }}>
                             {t('whatYouGetSection.button')}

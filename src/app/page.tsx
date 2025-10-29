@@ -14,14 +14,12 @@ import AnimatedCursor from "react-animated-cursor";
 export default function Home() {
   return (
     <LenisWrapper>
-      <div className="hidden lg:flex">
-        <AnimatedCursor
-          outerSize={0}
+      <AnimatedCursor
+        outerSize={0}
 
-        >
-          <PankhVector />
-        </AnimatedCursor>
-      </div>
+      >
+        <PankhVector className="hidden lg:flex" />
+      </AnimatedCursor>
       <div className="w-full overflow-x-hidden bg-primary">
         <Header />
         <HeroSection />

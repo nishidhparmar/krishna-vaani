@@ -16,9 +16,20 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
     const [phone, setPhone] = useState('')
     const [dob, setDob] = useState('')
     const formRef = useRef<HTMLFormElement>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        setIsSubmitting(true)
         e.preventDefault();
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'form_submitted',
+            name: name,
+            email: email,
+            dob_day: dob.split('-')[2],
+            dob_month: dob.split('-')[1],
+            dob_year: dob.split('-')[0],
+        });
 
         if (!formRef.current) return;
 
@@ -38,8 +49,10 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                 setPhone('');
                 setDob('');
                 setIsOpen(false);
+                setIsSubmitting(false)
             })
             .catch(err => {
+                setIsSubmitting(false)
                 alert('Something went wrong. Please try again.');
             });
     };
@@ -129,7 +142,7 @@ const Dialog: FC<DialogProps> = ({ isOpen, setIsOpen }) => {
                             </div>
 
                             {/* Submit Button */}
-                            <Button type='submit' className='mt-6'>Claim Access</Button>
+                            <Button disabled={isSubmitting} type='submit' className='mt-6'>{isSubmitting ? 'Submitting...' : 'Claim Access'}</Button>
                         </form>
                     </div>
                 </div>
